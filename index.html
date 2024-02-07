@@ -1,0 +1,179 @@
+<!-- <?php
+
+$confirmationClass = "";
+
+// Vérifier si le formulaire est soumis
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Récupérer les valeurs des champs
+    $nom = $_POST['nom'];
+    $prenom = $_POST['prenom'];
+    $email = $_POST['email'];
+    $phone = $_POST['phone'];
+    $message = $_POST['message'];
+
+    // Vérifier si tous les champs sont saisis
+    if (!empty($nom) && !empty($prenom) && !empty($email) && !empty($message)) {
+        // Vérifier si l'adresse e-mail est valide
+        if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            // Adresse e-mail de destination
+            $to = "contact@devwebconcept.com";
+            // Sujet du message
+            $subject = "Nouveau message DevWebConcept.com";
+            // Corps du message
+            $body = "Prenom: $prenom\nNom: $nom\nEmail: $email\nTéléphone: $phone\nMessage: $message";
+            // En-têtes du message
+            $headers = "From: $email";
+
+            // Envoyer l'e-mail
+            if (mail($to, $subject, $body, $headers)) {
+                $confirmationMessage = "Merci $prenom $nom! Votre message a été envoyé avec succès.";
+                $confirmationClass = "success";
+            } else {
+                $confirmationMessage = "Une erreur s'est produite lors de l'envoi de votre message. Veuillez réessayer.";
+                $confirmationClass = "warning";
+            }
+        } else {
+            // L'adresse e-mail n'est pas valide
+            $confirmationMessage = "Veuillez saisir une adresse e-mail valide.";
+            $confirmationClass = "danger";
+        }
+    } else {
+        // Tous les champs ne sont pas saisis
+        $confirmationMessage = "Veuillez remplir tous les champs du formulaire.";
+        $confirmationClass = "danger";
+    }
+}
+
+?> -->
+
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Artisan plaquiste, plâtrier et staffeur à Nice. Spécialisé dans la création d'espaces intérieurs harmonieux, nous maîtrisons l'art du plâtre et du staff pour des finitions exceptionnelles. Contactez-nous pour des travaux de qualité, alliant expertise et créativité pour sublimer votre intérieur.">
+
+    <title> LOUCORP </title>
+
+    <!-- Bootstrap Icons-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <!-- CSS personnalisé -->
+    <link href="assets/css/style.css" rel="stylesheet">
+
+</head>
+<body class="">
+    <!-- Navigation-->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav">
+        <div class="container px-4 px-lg-5">
+            <a class="navbar-brand mx-auto text-light" href="#page-top">LOUCORP</a>
+            <!-- <img src="assets/img/" alt="logo de l'entreprise" style="height: 60px;"> -->
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav mx-auto my-2 my-lg-0">
+                    <li class="nav-item"><a class="nav-link text-light" href="#">Accueil</a></li>
+                    <li class="nav-item"><a class="nav-link text-light" href="#about">A propos de nous</a></li>
+                    <li class="nav-item"><a class="nav-link text-light" href="#competence">Nos compétences</a></li>
+                    <li class="nav-item"><a class="nav-link text-light" href="#realisation">Nos réalisations</a></li>
+                    <li class="nav-item"><a class="nav-link text-light" href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- Home -->
+    <div id="home" class="d-flex flex-column col-8 mx-auto justify-content-center">
+        <h1 class="text-center mb-4 font-monospace" style="font-size: 80px;"> LOUCORP </h1>
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-4">
+                        <div class="scrolling-container">
+                            <div class="scrolling-text">
+                                <span>ENDUITS</span>
+                                <span>FAUX PLAFONDS</span>
+                                <span>CLOISONS</span>
+                                <span>REVÊTEMENTS</span>
+                                <span>PEINTURE</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                    <!-- <h2 class="text-center mt-4 mb-5 font-monospace scrolling-text" style="font-size: 25px;">
+                        <span>ENDUITS</span> 
+                        <span>FAUX PLAFONDS</span> 
+                        <span>CLOISONS</span>
+                        <span>REVÊTEMENTS</span>
+                        <span>PEINTURE</span>
+                    </h2>        -->
+        <a class="mt-4 col-3 mx-auto btn btn-light btn-xl" href="#contact"> Obtenez votre devis rapidement !</a>
+    </div>
+    <!-- About -->
+    <div id="about" class="">
+        <div class="d-flex justify-content-center mx-auto">
+            <div class="vr"></div>
+          </div>
+        <h2> Je suis </h2>
+    </div>
+    <!-- Competences -->
+    <div id="competence" class="">
+        <p> placo - staffeur - etc</p>
+    </div>
+    <!-- Réalisations -->
+    <div id="realisation" class="">
+        <p> PROJET</p>
+    </div>
+
+    <div id="contact" class="my-auto">
+        <div class="row gx-4 gx-lg-5 justify-content-center mb-5">
+            <div class="col-lg-6">
+                <div class="container mt-2">
+                <form method="POST" action="">
+                        <div class="d-flex mb-3">
+                            <div class="form-group col-md-6 pe-1">
+                                <label for="prenom">Prénom :</label>
+                                <input type="text" placeholder="" class="form-control" id="prenom" name="prenom" required>
+                            </div>
+                            <div class="form-group col-md-6 ps-1">
+                                <label for="nom">Nom :</label>
+                                <input type="text" placeholder="" class="form-control" id="nom" name="nom" required>
+                            </div>
+                        </div>
+                        <div class="form-group mb-4">
+                            <label for="email">Email :</label>
+                            <input type="email" placeholder="" class="form-control" id="email" name="email" required>
+                        </div>
+                        <div class="form-group mb-4">
+                            <label for="phone">Téléphone :</label>
+                            <input type="tel" placeholder="" class="form-control" id="phone" name="phone" >
+                        </div>
+                        <div class="form-group mb-4">
+                            <label for="message">Message :</label>
+                            <textarea class="form-control" id="message" name="message" rows="4" required></textarea>
+                        </div>
+                        <div class="text-center">
+                            <!-- <div class="g-recaptcha mb-2 d-flex justify-content-center" data-sitekey="6LeGuSopAAAAAN-ZJpFBKomc67kXpuUU27vKugwE"></div>
+                            <input type="hidden" name="g-recaptcha-response" id="g-recaptcha-response"> -->
+                            <button type="submit" class="btn btn-primary" name="submit" id="submit-btn">Envoyer</button>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-lg-4 text-center mb-5 mb-lg-0">
+                <i class="bi-phone fs-2 mb-3 text-muted"></i>
+                <br>
+                <a href="tel:+33612248452" class="text-decoration-none ">+33 6 12 24 84 52</a>
+            </div>
+        </div>
+    </div>
+    <!-- Footer-->
+    <footer class="bg-light py-5">
+        <div class="container px-4 px-lg-5"><div class="small text-center text-muted">Copyright &copy; 2022 - S.A.R.L LOUCORP</div></div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+</body>
+</html>
