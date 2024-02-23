@@ -10,23 +10,29 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = $_POST['email'];
     $phone = $_POST['phone'];
     $message = $_POST['message'];
+    $etage = $_POST['message'];
+    $superficie = $_POST['message'];
 
     // Vérifier si tous les champs sont saisis
-    if (!empty($nom) && !empty($prenom) && !empty($email) && !empty($message)) {
+    if (!empty($nom) && !empty($prenom) && !empty($email) && !empty($phone) && !empty($message) && !empty($etage) && !empty($superficie)) {
         // Vérifier si l'adresse e-mail est valide
         if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
             // Adresse e-mail de destination
-            $to = "contact@devwebconcept.com";
+            $to = "@gmail.com";
             // Sujet du message
-            $subject = "Nouveau message DevWebConcept.com";
+            $subject = "Nouveau message de LOUCORP.fr";
             // Corps du message
-            $body = "Prenom: $prenom\nNom: $nom\nEmail: $email\nTéléphone: $phone\nMessage: $message";
+            $body = "   Prenom: $prenom\n
+                        Nom: $nom\n
+                        Email: $email\n
+                        Téléphone: $phone\n
+                        Message: $message";
             // En-têtes du message
             $headers = "From: $email";
 
             // Envoyer l'e-mail
             if (mail($to, $subject, $body, $headers)) {
-                $confirmationMessage = "Merci $prenom $nom! Votre message a été envoyé avec succès.";
+                $confirmationMessage = "Merci $prenom $nom! Votre message a été envoyé avec succès. LOUCORP vous contacte ou vous envoie votre devis rapidement";
                 $confirmationClass = "success";
             } else {
                 $confirmationMessage = "Une erreur s'est produite lors de l'envoi de votre message. Veuillez réessayer.";
@@ -102,7 +108,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     </nav>
     <!-- Home -->
     <div id="home" class="d-flex flex-column  mx-auto justify-content-center">
-        <h1 class="text-center mb-4 font-monospace fade-in" style="font-size: 80px">LOUCORP</h1>
+        <h1 class="text-center mb-0 font-monospace fade-in" style="font-size: 100px">LOUCORP</h1>
+        <h3 class="text-center mb-4 font-monospace"> INNOVATION BATIMENT </h3>
+        <h5 class="text-center mt-2 mb-4 fst-italic font-monospace"> Innovons ensemble !</h5>
         <div class="container mb-4">
             <div class="row justify-content-center">
                 <div class="text-center">
@@ -112,12 +120,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             <span class="px-3 mobile">CLOISONS</span>
                             <span class="px-3 mobile">HABILLAGE</span>
                             <span class="px-3 mobile">ENDUITS</span>
+                            <span class="px-3 mobile">ISOLATION</span>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <a class="mt-4 mx-auto btn btn-primary btn-xl shadow-xl" href="#contact">Obtenez votre devis rapidement
+        <a class="mt-4 mx-auto bordeau btn btn-xl text-white shadow-xl" href="#contact">Obtenez votre devis rapidement
             !</a>
     </div>
     <!-- About -->
@@ -184,7 +193,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </p>
         </div>
     </div>
-    <div class="col-6 mx-auto mt-4 border-top border-primary"></div>
+    <div class="col-6 mx-auto mt-4 border-top border-dark"></div>
     <!-- Réalisations -->
     <div id="realisation" class="">
         <h1 class="text-center mb-5">Nos réalisations</h1>
@@ -202,6 +211,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <div class="row gx-4 gx-lg-5 justify-content-center mb-5">
             <div class="col-lg-6">
                 <div class="container mt-2">
+
+                <!-- <?php
+                    $confirmationClass
+                ?> -->
+
                     <form method="POST" action="">
                         <div class="d-flex mb-3">
                             <div class="form-group col-md-6 pe-1">
@@ -222,9 +236,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             <label for="phone">Téléphone :</label>
                             <input type="tel" placeholder="" class="form-control" id="phone" name="phone" />
                         </div>
+                        <div class="d-flex mx-auto form-group mb-4">
+                            <div style="width: 50%;">
+                                <label for="etage">Etage :</label>
+                                <input type="number" placeholder="" class="form-control" id="etage" name="etage" />
+                            </div>
+                            <div style="width: 50%;">
+                                <label for="etage">Superficie :</label>
+                                <input type="number" placeholder="en m²" class="form-control" id="superficie"
+                                    name="superficie" />
+                            </div>
+                        </div>
                         <div class="form-group mb-4">
                             <label for="message">Message :</label>
-                            <textarea class="form-control" id="message" name="message" rows="4" required></textarea>
+                            <textarea class="form-control" placeholder="Détaillez votre demande au maximum" id="message"
+                                name="message" rows="4" required></textarea>
                         </div>
                         <div class="text-center">
                             <!-- <div class="g-recaptcha mb-2 d-flex justify-content-center" data-sitekey="6LeGuSopAAAAAN-ZJpFBKomc67kXpuUU27vKugwE"></div>
@@ -251,13 +277,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <div class="text-center text-muted">
                 Copyright &copy; 2022 - S.A.R.L LOUCORP
             </div>
-            <div class="small text-center text-muted "> Site réalisé par <a href="https://devwebconcept.com" class="text-muted">DevWebConcept</a></div>
+            <div class="small text-center text-muted "> Site réalisé par <a href="https://devwebconcept.com"
+                    class="text-muted">DevWebConcept</a></div>
         </div>
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
         crossorigin="anonymous"></script>
-        <script src="assets/js/script.js"></script>
+    <script src="assets/js/script.js"></script>
 </body>
 
 </html>
