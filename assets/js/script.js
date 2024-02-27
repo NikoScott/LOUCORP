@@ -19,9 +19,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
             if (isHalfShown && isNotScrolledPast) {
                 image.classList.add('show');
-            } else {
-                image.classList.remove('show');
-            }
+            } 
         });
     }
 
