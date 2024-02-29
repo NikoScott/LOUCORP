@@ -1,3 +1,15 @@
+// DISPARITION MESSAGE 
+// ///////////////
+
+setTimeout(function() {
+    var msg = document.getElementById('msg');
+    if (msg) {
+        msg.style.display = 'none';
+    }
+}, 5000); // 5000 millisecondes = 5 secondes
+
+
+
 // ANIMATION TITRE
 // ///////////////
 document.addEventListener("DOMContentLoaded", function() {

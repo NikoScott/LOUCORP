@@ -1,9 +1,9 @@
-<!-- <?php
+<?php
 
 $confirmationClass = "";
 
 // Vérifier si le formulaire est soumis
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
+if ($_SERVER['REQUEST_METHOD'] == "POST") {
     // Récupérer les valeurs des champs
     $nom = $_POST['nom'];
     $prenom = $_POST['prenom'];
@@ -14,11 +14,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $superficie = $_POST['message'];
 
     // Vérifier si tous les champs sont saisis
-    if (!empty($nom) && !empty($prenom) && !empty($email) && !empty($phone) && !empty($message) && !empty($etage) && !empty($superficie)) {
+    if (!empty($nom) 
+    && !empty($prenom) 
+    && !empty($email) 
+    && !empty($phone) 
+    && !empty($message) 
+    && !empty($etage) 
+    && !empty($superficie)) {
         // Vérifier si l'adresse e-mail est valide
         if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
             // Adresse e-mail de destination
-            $to = "@gmail.com";
+            $to = "nico.pereire@gmail.com";
+
+///////////////// loucorp.ed@gmail.com
+///   MODIFIER ADRESSE AVANT PROD            
+
             // Sujet du message
             $subject = "Nouveau message de LOUCORP.fr";
             // Corps du message
@@ -26,16 +36,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         Nom: $nom\n
                         Email: $email\n
                         Téléphone: $phone\n
+                        Etage: $etage\n
+                        Superficie: $superficie\n
                         Message: $message";
             // En-têtes du message
             $headers = "From: $email";
 
             // Envoyer l'e-mail
             if (mail($to, $subject, $body, $headers)) {
-                $confirmationMessage = "Merci $prenom $nom! Votre message a été envoyé avec succès. LOUCORP vous contacte ou vous envoie votre devis rapidement";
+                $confirmationMessage = "Merci $prenom $nom! <br>
+                Votre message a été envoyé avec succès.<br><br>
+                LOUCORP vous contactera ou vous enverra votre devis rapidement";
                 $confirmationClass = "success";
             } else {
-                $confirmationMessage = "Une erreur s'est produite lors de l'envoi de votre message. Veuillez réessayer.";
+                $confirmationMessage = "Une erreur s'est produite lors de l'envoi de votre message. Veuillez réessayer svp.";
                 $confirmationClass = "warning";
             }
         } else {
@@ -49,8 +63,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $confirmationClass = "danger";
     }
 }
-
-?> -->
+?>
 
 <!DOCTYPE html>
 <html lang="fr">
@@ -134,7 +147,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <div class="d-flex justify-content-center mx-auto">
             <div class="vr"></div>
         </div>
-        <div class="col-xl-8 text-center my-4 mx-3 lh-lg">
+        <div class="col-xl-8 text-center my-4 mx-auto mx-3 lh-lg">
             <p class="fs-4">
                 Découvrez LOUCORP,<br>
                 votre partenaire de confiance pour des travaux de
@@ -227,9 +240,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <div class="row gx-4 gx-lg-5 justify-content-center mb-5">
             <div class="col-lg-6">
                 <div class="container mt-2">
-                <!-- <?php
-                    $confirmationClass
-                ?> -->
+
+                <!-- CONFIRMATION -->
+                <?php if(!empty($confirmationClass)) { ?>
+                    <!-- CONFIRMATION -->
+                    <div id="msg" class="text-center alert alert-<?php echo $confirmationClass;?>" role="alert"><?php echo $confirmationMessage; ?></div>
+                <?php } ?>
+
                     <form method="POST" action="">
                         <div class="d-flex mb-3">
                             <div class="form-group col-md-6 pe-1">
@@ -248,17 +265,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         </div>
                         <div class="form-group mb-4">
                             <label for="phone">Téléphone :</label>
-                            <input type="tel" placeholder="06 12 34 56 78" class="form-control" id="phone" name="phone" />
+                            <input type="tel" placeholder="06 12 34 56 78" class="form-control" id="phone" name="phone" required/>
                         </div>
                         <div class="d-flex mb-3">
                             <div class="form-group col-md-6 pe-1">
                                 <label for="etage">Etage :</label>
-                                <input type="number" placeholder="ex: 1" class="form-control" id="etage" name="etage" />
+                                <input type="number" placeholder="ex: 1" class="form-control" id="etage" name="etage" required/>
                             </div>
                             <div class="form-group col-md-6 ps-1">
                                 <label for="etage">Superficie :</label>
                                 <input type="number" placeholder="en m²" class="form-control" id="superficie"
-                                    name="superficie" />
+                                    name="superficie" required/>
                             </div>
                         </div>
                         <div class="form-group mb-4">
