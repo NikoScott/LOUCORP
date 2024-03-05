@@ -4,7 +4,7 @@
 html, body {
     max-width: 100%;
     overflow-x : hidden !important;
-    background-color: rgb(230, 230, 230) !important;
+    /* background-color: rgb(230, 230, 230) !important; */
 }
 .navbar {
     background-color: #7f0000;
@@ -17,7 +17,27 @@ html, body {
 }
 #home {
     min-height: 100vh;
+    position: relative; /* Position relative pour que les éléments à l'intérieur soient positionnés par rapport à ce conteneur */
 }
+
+#home::before {
+    content: ""; /* Ajout d'un pseudo-élément pour créer la superposition floutée */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("../img/IMG_3870.JPG");
+    background-size: cover;
+    filter: blur(7px); /* Flou de l'image de fond */
+    z-index: -1;
+}
+
+#home-text {
+    color: black;
+    z-index: 1; /* Assure que le texte est au-dessus de l'image floutée */
+}
+
 #about {
     min-height: 100vh;
     background-color:rgb(35, 35, 35);
@@ -43,14 +63,17 @@ html, body {
     color: #690000;
 }
 h1 {
-    text-shadow: rgba(40, 40, 40, 0.85) 1px 0 10px;
+    text-shadow: rgba(40, 40, 40, 0.85) 7px 7px 20px;
 }
 .shadow-xl {
     box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.8)
 }
 .img-size{
-    width: 50%;
+    width: 40%;
     height: 100%;
+}
+video {
+    width: 40%;
 }
 .btn-bordeau {
     background-color: #a81919;
@@ -83,6 +106,9 @@ h1 {
 @media (max-width: 1024px) {
     .img-size {
         width: 100%;
+    }
+    video {
+        width: 90%;
     }
 
     .mobile {
