@@ -1,0 +1,12 @@
+User-agent: *
+
+
+Disallow: /assets/img
+Disallow: /js/
+Disallow: /css/
+Disallow: /*.jpg
+Disallow: /*.jpeg
+Disallow: /*.png
+Disallow: /*.gif
+
+Sitemap: https://loucorp.fr/sitemap.xml

@@ -9,9 +9,9 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     $prenom = $_POST['prenom'];
     $email = $_POST['email'];
     $phone = $_POST['phone'];
+    $etage = $_POST['etage'];
+    $superficie = $_POST['superficie'];
     $message = $_POST['message'];
-    $etage = $_POST['message'];
-    $superficie = $_POST['message'];
 
     // Vérifier si tous les champs sont saisis
     if (!empty($nom) 
@@ -78,6 +78,8 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         content="plaquisterie, plâtrerie, stafferie, Nice, Alpes-Maritimes, rénovation, construction, devis rapide, travail de qualité" />
     <meta name="author" content="DevWebConcept" />
     <meta http-equiv="Content-Language" content="fr">
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
     <!-- Bootstrap Icons-->
     <link href="bootstrap-icons-1.11.3/font/bootstrap-icons.min.css" rel="stylesheet" />
     <!-- Bootstrap -->
@@ -168,8 +170,8 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
             <div class="mx-4 p-4">
                 <img src="assets/img/profil.png" alt="photo de profil" style="width: 350px;">
             </div>
-            <div class="col-xl-6 mx-4 lh-lg fw-semibold fs-5">
-                <i class="bi bi-quote fs-1"></i>
+            <div class="col-xl-6 mx-4 lh-lg fw-semibold fs-6">
+                <i class="bi bi-quote"></i>
                 Expert plaquiste avec 20 ans d'expérience dans le domaine, ma passion pour mon métier se reflète dans chaque projet que je réalise où je m'efforce de créer des espaces intérieurs à la fois fonctionnels et esthétiques. Spécialisé dans l'installation de cloisons, de faux plafonds et d'autres éléments en plaque de plâtre, je suis compétent dans la lecture des plans, la prise de mesures précises et la réalisation de découpes complexes pour garantir un résultat impeccable.
                 <br>
                 <br>
@@ -177,7 +179,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                 <br>
                 <br>
                 Je reste constamment à l'affût des nouvelles tendances et des innovations dans le domaine de la plaquisterie afin de proposer des solutions modernes et de haute qualité à mes clients. Je suis impatient de mettre mes compétences au service de votre projet et de contribuer à la création d'un espace exceptionnel qui répondra à vos besoins et dépassera vos attentes.
-                <i class="bi bi-quote fs-1"></i>
+                <i class="bi bi-quote"></i>
                 <br>
             </div>
         </div>
@@ -191,8 +193,8 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         <h1 class="text-center mx-auto mb-5">Nos compétences</h1>
         <div class="mx-4 mb-5">
             <i class="bi bi-layers fs-1"></i>
-            <p class="fs-5 mt-2 mb-4">PLAQUISTE</p>
-            <p>
+            <p class="fs-4 mt-2 mb-4">PLAQUISTE</p>
+            <p class="fs-6">
                 Notre artisan plaquiste est un expert dans l'installation de cloisons
                 et de faux plafonds. Avec une précision méticuleuse et un souci du
                 détail, il crée des espaces fonctionnels et esthétiques dans vos
@@ -204,8 +206,8 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         </div>
         <div class="mx-4 mb-5">
             <i class="bi bi-pentagon fs-1"></i>
-            <p class="fs-5 mt-2 mb-4">STAFFEUR</p>
-            <p>
+            <p class="fs-4 mt-2 mb-4">STAFFEUR</p>
+            <p class="fs-6">
                 Le talent de notre artisan staffeur réside dans la création de
                 décorations intérieures élégantes et sophistiquées. Grâce à son
                 savoir-faire artisanal, il transforme les espaces en véritables œuvres
@@ -217,8 +219,8 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         </div>
         <div class="mx-4 mb-5">
             <i class="bi bi-bricks fs-1"></i>
-            <p class="fs-5 mt-2 mb-4">PLATRIER</p>
-            <p>
+            <p class="fs-4 mt-2 mb-4">PLATRIER</p>
+            <p class="fs-6">
                 Notre plâtrier est un professionnel expérimenté dans l'application du
                 plâtre pour lisser et embellir les surfaces murales. Grâce à sa
                 maîtrise des techniques traditionnelles et des outils modernes, il
