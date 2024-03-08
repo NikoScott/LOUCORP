@@ -24,10 +24,9 @@ html, body {
     content: ""; /* Ajout d'un pseudo-élément pour créer la superposition floutée */
     position: absolute;
     top: 0;
-    left: 0;
+    left: -5%;
     width: 110%;
     height: 110%;
-    left: -5%;
     background-image: url("../img/placo5.jpeg");
     background-size: cover;
     filter: blur(7px); /* Flou de l'image de fond */
@@ -63,7 +62,7 @@ html, body {
     width: 0.25em !important;
     color: #ff0000;
 }
-h1 {
+.shadow-title {
     text-shadow: rgba(40, 40, 40, 0.85) 7px 7px 20px;
 }
 .shadow-xl {
@@ -121,8 +120,20 @@ video {
         font-size: 80px !important;
     }
 }
-
-
+@media (max-width: 425px) {
+    #home::before {
+        content: ""; /* Ajout d'un pseudo-élément pour créer la superposition floutée */
+        position: absolute;
+        top: 0;
+        left: -150%;
+        width: 300%;
+        height: 110%;
+        background-image: url("../img/placo5.jpeg");
+        background-size: cover;
+        filter: blur(7px); /* Flou de l'image de fond */
+        z-index: -1;
+    }
+}
 
 /* @keyframes scroll {
     0% { transform: translateX(60%); }

@@ -24,11 +24,8 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         // Vérifier si l'adresse e-mail est valide
         if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
             // Adresse e-mail de destination
-            $to = "nico.pereire@gmail.com";
-
-///////////////// loucorp.ed@gmail.com
-///   MODIFIER ADRESSE AVANT PROD            
-
+            $to = "loucorp.ed@gmail.com";
+       
             // Sujet du message
             $subject = "Nouveau message de LOUCORP.fr";
             // Corps du message
@@ -92,7 +89,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     <!-- Navigation-->
     <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav">
         <div class="container px-4 px-lg-5">
-            <img src="assets/img/logo.png" alt="Logo de l'entreprise LOUCORP" style="height: 60px;">
+            <a href="#"><img src="assets/img/logo.png" alt="Logo de l'entreprise LOUCORP" style="height: 60px;"></a>
             <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
                 aria-label="Toggle navigation">
@@ -190,7 +187,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     </div>
     <!-- Competences -->
     <div id="competence" class="d-flex flex-wrap col-xl-8 col-md-8 mx-auto text-center lh-lg">
-        <h1 class="text-center mx-auto mb-5">Nos compétences</h1>
+        <h2 class="text-center mx-auto mb-5 shadow-title" style="font-size: 2.5rem;">Nos compétences</h2>
         <div class="mx-4 mb-5">
             <i class="bi bi-layers fs-1"></i>
             <p class="fs-4 mt-2 mb-4">PLAQUISTE</p>
@@ -234,11 +231,11 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     <hr class="separator col-8 mx-auto" style="height:4px;background:#7f0000;">
     <!-- Réalisations -->
     <div id="realisation" class="mb-5">
-        <h1 class="text-center mb-5">Nos réalisations</h1>
+        <h2 class="text-center mb-5 shadow-title" style="font-size: 2.5rem;">Nos réalisations</h2>
         <div class="col-10 mx-auto d-flex flex-wrap justify-content-center">
             <img class="img-size p-1 slide-in" src="assets/img/IMG_3866.JPG" alt="photo de realisation">
             <img class="img-size p-1 slide-in" src="assets/img/IMG_3868.JPG" alt="photo de realisation">
-            <video controls muted loop>
+            <video controls autoplay muted loop>
                 <source src="assets/movie/movie.MOV" type="video/mp4" class="slide-in">
             </video>
             <img class="img-size p-1 slide-in" src="assets/img/IMG_3870.JPG" alt="photo de realisation">
@@ -251,7 +248,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     <hr class="separator col-8 mx-auto" style="height:4px;background:#7f0000;">
     <!-- Contact -->
     <div id="contact" class="my-auto">
-        <h1 class="text-center mb-5">Nous contacter</h1>
+        <h2 class="text-center mb-5 shadow-title" style="font-size: 2.5rem;">Nous contacter</h2>
         <div class="row gx-4 gx-lg-5 justify-content-center mb-5">
             <div class="col-lg-6">
                 <div class="container mt-2">
