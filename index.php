@@ -1,4 +1,4 @@
-<!-- <?php
+<?php
 
 $confirmationClass = "";
 
@@ -23,6 +23,29 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     && !empty($superficie)) {
         // Vérifier si l'adresse e-mail est valide
         if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            // Validation CAPTCHA côté serveur
+            $recaptchaSecretKey = "6LdIEaApAAAAAI8opPPUK-SmQ4idCnltRqPj_PwV";
+            $recaptchaResponse = $_POST['g-recaptcha-response'];
+            $recaptchaUrl = 'https://www.google.com/recaptcha/api/siteverify';
+            $recaptchaData = array(
+                'secret' => $recaptchaSecretKey,
+                'response' => $recaptchaResponse
+            );
+
+            $options = array(
+                'http' => array (
+                    'method' => 'POST',
+                    'header' => 'Content-Type: application/x-www-form-urlencoded',
+                    'content' => http_build_query($recaptchaData)
+                )
+            );
+            $context  = stream_context_create($options);
+            $verify = file_get_contents($recaptchaUrl, false, $context);
+            $captchaSuccess = json_decode($verify);
+
+            if ($captchaSuccess->success) {
+                // CAPTCHA validé avec succès, envoyer l'e-mail
+
             // Adresse e-mail de destination
             $to = "loucorp.ed@gmail.com";
        
@@ -61,7 +84,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     }
 }
 ?>
- -->
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -83,6 +106,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     <link href="bootstrap-5.3.3/css/bootstrap.min.css" rel="stylesheet">
     <!-- CSS personnalisé -->
     <link href="assets/css/style.css" rel="stylesheet" />
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </head>
 
 <body class="">
@@ -285,7 +309,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                                 <input type="number" placeholder="ex: 1" class="form-control" id="etage" name="etage" required/>
                             </div>
                             <div class="form-group col-md-6 ps-1">
-                                <label for="etage">Superficie :</label>
+                                <label for="superficie">Superficie :</label>
                                 <input type="number" placeholder="en m²" class="form-control" id="superficie"
                                     name="superficie" required/>
                             </div>
@@ -296,8 +320,8 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                                 name="message" rows="4" required></textarea>
                         </div>
                         <div class="text-center">
-                            <!-- <div class="g-recaptcha mb-2 d-flex justify-content-center" data-sitekey="6LeGuSopAAAAAN-ZJpFBKomc67kXpuUU27vKugwE"></div>
-                            <input type="hidden" name="g-recaptcha-response" id="g-recaptcha-response"> -->
+                            <div class="g-recaptcha d-flex justify-content-center" data-sitekey="6LdIEaApAAAAAMuZcVbHrCkgRavhlnPNdBN5Ds32"></div>
+                            <br>
                             <button type="submit" class="btn btn-bordeau text-white" name="submit" id="submit-btn">
                                 Envoyer
                             </button>
@@ -327,5 +351,4 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     <script src="bootstrap-5.3.3/js/bootstrap.bundle.min.js"> </script>
     <script src="assets/js/script.js"></script>
 </body>
-
 </html>
